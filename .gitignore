@@ -1,0 +1,14 @@
+#virtual environment
+.venv
+
+# Pre-compiled bytecode
+__pycache__/
+
+# IDE (Pycharm folder)
+.idea
+
+# Image uploads folder
+uploads
+
+#Environment file
+.env
