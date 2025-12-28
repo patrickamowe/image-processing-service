@@ -1,7 +1,6 @@
 import uuid
 from io import BytesIO
-from datetime import datetime
-from fastapi import APIRouter, UploadFile, File, Depends, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
 from models.models import Image
 from schemas.image_schema import ImageResponse, ImageList, ImageUpdate
@@ -12,6 +11,8 @@ from schemas.user_schema import GetUser
 from PIL import Image as PILImage, UnidentifiedImageError
 from utils.image_utils import transform_image, delete_image_duplicate
 import os
+
+from utils.limiter import limiter
 
 router = APIRouter(prefix="/images", tags=["Images"])
 
@@ -120,7 +121,9 @@ async def list_uploaded_images(
 
 
 @router.post("/{image_id}/transform", response_model=ImageResponse)
+@limiter.limit("1/day") # Limit to one request per day
 async def apply_image_transformations(
+        request: Request,
         image_id: int,
         transformations: dict[str, dict | str | int | bool],
         db: Session = Depends(get_db),
