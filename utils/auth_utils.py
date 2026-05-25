@@ -15,7 +15,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 SECRET_KEY = os.environ.get("JWT_SECRET")
 ALGORITHM = os.environ.get("JWT_ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES=60
+ACCESS_TOKEN_EXPIRE_MINUTES=float(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify if plain and hashed password is the same."""

@@ -1,0 +1,33 @@
+# docker file
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+
+# Pre-compiled bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE (Pycharm folder)
+.idea
+
+# Environment Variables
+env/
+venv/
+.venv
+
+.env
+.env.example
+
+# Git file
+.git/
+.gitignore
+
+# Readme file
+README.md
+
+# Test files
+tests/

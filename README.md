@@ -38,9 +38,11 @@ image-processing-service/
 └── README.md               # Project documentation
 ```
 
-## Installation
+---
 
-### Steps to Install
+## Running the FastAPI Application
+
+### Using Virtual Environment
 
 1. **Clone the repository**
    ```bash
@@ -52,30 +54,37 @@ image-processing-service/
 
    **macOS/Linux:**
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   python3 -m venv .venv
+   source .venv/bin/activate
    ```
 
    **Windows:**
    ```bash
-   python -m venv venv
-   venv\Scripts\activate
+   python -m venv .venv
+   .venv\Scripts\activate
    ```
 
 3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
+4. **Run the API server**
+   ```bash
+   fastapi dev main.py
+   ```
+   This command starts the server locally at `http://127.0.0.1:8000`.
 
----
+### Using Docker
 
-## Running and Testing
-
-### Run the API Server
-```bash
-  fastapi dev main.py
-```
-This command starts the server locally at `http://127.0.0.1:8000`.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/patrickamowe/image-processing-service.git
+   ```
+   Open the repository in your favorite code editor (IDE).
+2.  **Building and running Docker Container**
+   ```bash
+  docker compose up --build
+   ```
 
 ---
 
